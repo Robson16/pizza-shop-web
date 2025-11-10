@@ -1,12 +1,7 @@
-import { Button } from './components/ui/button'
+import { RouterProvider } from 'react-router-dom'
+
+import { router } from './routes'
 
 export function App() {
-  return (
-    <div className="flex h-screen min-h-screen items-center justify-center">
-      <div className="text-center">
-        <h1 className="mb-8 text-5xl font-bold">Hello Pizza Shop</h1>
-        <Button>Enviar</Button>
-      </div>
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
