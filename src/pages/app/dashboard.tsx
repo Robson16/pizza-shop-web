@@ -1,3 +1,9 @@
 export function Dashboard() {
-  return <h1>Dashboard</h1>
+  return (
+    <>
+      <title>Dashboard | Pizza Shop</title>
+
+      <h1>Dashboard</h1>
+    </>
+  )
 }
