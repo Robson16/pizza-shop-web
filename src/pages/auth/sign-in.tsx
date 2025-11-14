@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import * as zod from 'zod'
 
 import { Button } from '@/components/ui/button'
@@ -22,7 +23,17 @@ export function SignIn() {
   })
 
   async function handleSignIn(data: SignInFormInputs) {
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    toast.promise<{ name: string }>(
+      () =>
+        new Promise((resolve) =>
+          setTimeout(() => resolve({ name: 'Event' }), 2000),
+        ),
+      {
+        loading: 'Autenticando...',
+        success: 'Enviamos um link de autenticação para seu e-mail.',
+        error: 'Usuário não encontrado.',
+      },
+    )
 
     console.log(data)
   }
