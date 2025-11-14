@@ -1,8 +1,32 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import * as zod from 'zod'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
+const signInFormSchema = zod.object({
+  email: zod.email(),
+})
+
+type SignInFormInputs = zod.infer<typeof signInFormSchema>
+
 export function SignIn() {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<SignInFormInputs>({
+    resolver: zodResolver(signInFormSchema),
+  })
+
+  async function handleSignIn(data: SignInFormInputs) {
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    console.log(data)
+  }
+
   return (
     <>
       <title>Login | Pizza Shop</title>
@@ -18,13 +42,13 @@ export function SignIn() {
             </p>
           </div>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
-              <Input id="email" type="email" required />
+              <Input id="email" type="email" required {...register('email')} />
             </div>
 
-            <Button className="w-full" type="submit">
+            <Button disabled={isSubmitting} className="w-full" type="submit">
               Acessar painel
             </Button>
           </form>
