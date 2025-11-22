@@ -77,39 +77,20 @@ npm run format:check
 
 ```
 src/
-├── App.tsx                  # Componente raiz
-├── global.css                # Estilos globais
-├── main.tsx                  # Ponto de entrada
-├── routes.tsx                # Definição de rotas
-├── assets/                   # Recursos estáticos
-├── components/               # Componentes reutilizáveis
-│   ├── account-menu.tsx      # Menu de conta do usuário
-│   ├── header.tsx            # Cabeçalho
-│   ├── nav-link.tsx          # Link de navegação
-│   ├── theme/                # Componentes de tema (provider, toggle)
-│   └── ui/                   # Componentes de UI (shadcn/ui)
-│       ├── button.tsx
-│       ├── dropdown-menu.tsx
-│       ├── input.tsx
-│       ├── label.tsx
-│       ├── separator.tsx
-│       ├── sonner.tsx
-│       └── table.tsx
-├── lib/
-│   └── utils.ts              # Funções utilitárias
-├── pages/                    # Páginas da aplicação
-│   ├── _layouts/             # Layouts (App, Auth)
-│   │   ├── app.tsx           # Layout principal
-│   │   └── auth.tsx          # Layout de autenticação
-│   ├── app/                  # Páginas autenticadas
-│   │   ├── dashboard.tsx     # Dashboard principal
-│   │   └── orders/           # Módulo de pedidos
-│   │       ├── orders.tsx            # Página de listagem de pedidos
-│   │       ├── order-table-filters.tsx # Filtros da tabela de pedidos
-│   │       └── order-table-row.tsx     # Linha da tabela de pedidos
-│   └── auth/                 # Páginas de autenticação
-│       ├── sign-in.tsx       # Login
-│       └── sign-up.tsx       # Cadastro
+├── App.tsx            # Componente raiz
+├── global.css         # Estilos globais
+├── main.tsx           # Ponto de entrada
+├── routes.tsx         # Definição de rotas
+├── assets/            # Recursos estáticos
+├── components/        # Componentes reutilizáveis
+│   ├── theme/         # Gerenciamento de tema
+│   └── ui/            # Componentes de UI
+├── lib/               # Funções utilitárias
+├── pages/             # Páginas da aplicação
+│   ├── _layouts/      # Layouts principais
+│   ├── app/           # Páginas autenticadas
+│   │   └── orders/    # Módulo de pedidos
+│   └── auth/          # Páginas de autenticação
 ```
 
 ## 🔐 Autenticação
