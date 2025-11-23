@@ -89,6 +89,7 @@ src/
 ├── pages/             # Páginas da aplicação
 │   ├── _layouts/      # Layouts principais
 │   ├── app/           # Páginas autenticadas
+│   │   ├── dashboard/ # Módulo de dashboard
 │   │   └── orders/    # Módulo de pedidos
 │   └── auth/          # Páginas de autenticação
 ```
