@@ -101,15 +101,18 @@ O projeto implementa um sistema de autenticação com layouts separados:
 - **AuthLayout** - Para páginas de login
 - **AppLayout** - Para páginas do dashboard (autenticadas)
 
-## 👨‍💻 Autor
+## 🖥️ Backend
 
-[Robson H. Rodrigues](https://github.com/Robson16)
+O backend da aplicação está disponível em um repositório separado, desenvolvido com Bun, Elysia, Drizzle ORM, TypeScript e outras tecnologias modernas. Ele oferece autenticação, gerenciamento de pedidos, clientes e integração com banco de dados PostgreSQL.
+
+- Repositório: [rocketseat-education/pizzashop-api](https://github.com/rocketseat-education/pizzashop-api)
 
 ## 📄 Licença
 
-Este projeto está licenciado - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-## 🔗 Referências
+---
 
-- [Demo Online](https://pizza-shop-web-nine.vercel.app/)
-- [Repositório](https://github.com/Robson16/pizza-shop-web)
+<p align="center">
+  Feito com 💜 por <a href="https://github.com/Robson16/">Robson H. Rodrigues</a>
+</p>
