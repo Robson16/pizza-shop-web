@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -7,6 +8,7 @@ import * as zod from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { signIn } from '@/services/sign-in'
 
 const signInFormSchema = zod.object({
   email: zod.email(),
@@ -23,20 +25,16 @@ export function SignIn() {
     resolver: zodResolver(signInFormSchema),
   })
 
-  async function handleSignIn(data: SignInFormInputs) {
-    toast.promise<{ name: string }>(
-      () =>
-        new Promise((resolve) =>
-          setTimeout(() => resolve({ name: 'Event' }), 2000),
-        ),
-      {
-        loading: 'Autenticando...',
-        success: 'Enviamos um link de autenticação para seu e-mail.',
-        error: 'Usuário não encontrado.',
-      },
-    )
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
 
-    console.log(data)
+  async function handleSignIn(data: SignInFormInputs) {
+    toast.promise(() => authenticate({ email: data.email }), {
+      loading: 'Autenticando...',
+      success: 'Enviamos um link de autenticação para seu e-mail.',
+      error: 'Usuário não encontrado.',
+    })
   }
 
   return (
