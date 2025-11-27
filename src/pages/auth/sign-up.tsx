@@ -1,12 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import * as zod from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { registerRestaurant } from '@/services/register-restaurant'
 
 const signUpFormSchema = zod.object({
   restaurantName: zod.string().min(3),
@@ -18,6 +20,8 @@ const signUpFormSchema = zod.object({
 type SignUpFormInputs = zod.infer<typeof signUpFormSchema>
 
 export function SignUp() {
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -26,20 +30,33 @@ export function SignUp() {
     resolver: zodResolver(signUpFormSchema),
   })
 
-  async function handleSignUp(data: SignUpFormInputs) {
-    toast.promise<{ name: string }>(
-      () =>
-        new Promise((resolve) =>
-          setTimeout(() => resolve({ name: 'Event' }), 2000),
-        ),
-      {
-        loading: 'Cadastrando...',
-        success: 'Enviamos um link de confirmação para seu e-mail.',
-        error: 'Falha no cadastro.',
-      },
-    )
+  const { mutateAsync: registerRestaurantFn } = useMutation({
+    mutationFn: registerRestaurant,
+  })
 
-    console.log(data)
+  async function handleSignUp(data: SignUpFormInputs) {
+    const toastId = toast.loading('Cadastrando restaurante...')
+
+    try {
+      await registerRestaurantFn({
+        restaurantName: data.restaurantName,
+        managerName: data.managerName,
+        email: data.email,
+        phone: data.phone,
+      })
+
+      toast.success('Restaurante cadastrado com sucesso!', {
+        id: toastId,
+        action: {
+          label: 'Login',
+          onClick: () => navigate(`/sign-in?email=${data.email}`),
+        },
+      })
+    } catch {
+      toast.error('Erro ao cadastrar restaurante.', {
+        id: toastId,
+      })
+    }
   }
 
   return (
