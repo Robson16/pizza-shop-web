@@ -92,6 +92,7 @@ src/
 │   │   ├── dashboard/ # Módulo de dashboard
 │   │   └── orders/    # Módulo de pedidos
 │   └── auth/          # Páginas de autenticação
+├── services/          # Serviços de integração com API
 ```
 
 ## 🔐 Autenticação
