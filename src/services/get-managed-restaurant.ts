@@ -1,6 +1,6 @@
 import { api } from './api'
 
-interface GetManagedRestaurantResponse {
+export interface GetManagedRestaurantResponse {
   id: string
   managerId: string | null
   name: string
