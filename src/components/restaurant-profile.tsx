@@ -25,7 +25,7 @@ import { Textarea } from './ui/textarea'
 
 const restaurantProfileSchema = zod.object({
   name: zod.string().min(1),
-  description: zod.string(),
+  description: zod.string().nullable(),
 })
 
 type RestaurantProfileSchema = zod.infer<typeof restaurantProfileSchema>
@@ -51,22 +51,38 @@ export function RestaurantProfile() {
     },
   })
 
+  function updateManagedRestaurantCache({
+    name,
+    description,
+  }: RestaurantProfileSchema) {
+    const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
+      'managed-restaurant',
+    ])
+
+    if (cached) {
+      queryClient.setQueryData<GetManagedRestaurantResponse>(
+        ['managed-restaurant'],
+        {
+          ...cached,
+          name,
+          description,
+        },
+      )
+    }
+
+    return { cached }
+  }
+
   const { mutateAsync: updateProfileFn } = useMutation({
     mutationFn: updateProfile,
-    onSuccess(_, { name, description }) {
-      const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
-        'managed-restaurant',
-      ])
+    onMutate({ name, description }) {
+      const { cached } = updateManagedRestaurantCache({ name, description })
 
-      if (cached) {
-        queryClient.setQueryData<GetManagedRestaurantResponse>(
-          ['managed-restaurant'],
-          {
-            ...cached,
-            name,
-            description,
-          },
-        )
+      return { previousProfileData: cached }
+    },
+    onError(_error, _variables, context) {
+      if (context?.previousProfileData) {
+        updateManagedRestaurantCache(context.previousProfileData)
       }
     },
   })
