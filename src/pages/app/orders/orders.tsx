@@ -1,3 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
+
 import { Pagination } from '@/components/pagination'
 import {
   Table,
@@ -6,11 +8,17 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { getOrders } from '@/services/get-orders'
 
 import { OrderTableFilters } from './order-table-filters'
 import { OrderTableRow } from './order-table-row'
 
 export function Orders() {
+  const { data: result } = useQuery({
+    queryKey: ['orders'],
+    queryFn: getOrders,
+  })
+
   return (
     <>
       <title>Pedidos | Pizza Shop</title>
@@ -36,9 +44,10 @@ export function Orders() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <OrderTableRow key={index} />
-                ))}
+                {result &&
+                  result.orders.map((order) => {
+                    return <OrderTableRow key={order.orderId} order={order} />
+                  })}
               </TableBody>
             </Table>
           </div>
