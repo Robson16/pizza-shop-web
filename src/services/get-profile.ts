@@ -1,6 +1,6 @@
 import { api } from './api'
 
-interface GetProfileResponse {
+export interface GetProfileResponse {
   id: string
   name: string
   email: string

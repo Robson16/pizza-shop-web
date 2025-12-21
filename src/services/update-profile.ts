@@ -1,6 +1,6 @@
 import { api } from './api'
 
-interface UpdateProfileBody {
+export interface UpdateProfileBody {
   name: string
   description: string | null
 }
