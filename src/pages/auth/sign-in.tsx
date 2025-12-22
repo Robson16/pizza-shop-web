@@ -38,7 +38,7 @@ export function SignIn() {
     toast.promise(() => authenticate({ email: data.email }), {
       loading: 'Autenticando...',
       success: 'Enviamos um link de autenticação para seu e-mail.',
-      error: 'Usuário não encontrado.',
+      error: 'Credenciais inválidas.',
     })
   }
 
