@@ -41,9 +41,8 @@ export const worker = setupWorker(
 )
 
 export async function enableMSW() {
-  if (env.MODE !== 'test') {
-    return
+  // Start MSW in test mode or when explicitly enabled via VITE_USE_MOCKS
+  if (env.MODE === 'test' || env.VITE_API_URL === '/' || env.VITE_USE_MOCKS) {
+    await worker.start()
   }
-
-  await worker.start()
 }

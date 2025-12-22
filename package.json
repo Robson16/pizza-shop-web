@@ -27,7 +27,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:test": "vite --port 50789 --mode test",
+    "dev:test": "vite --mode test",
     "dev:test:e2e": "playwright test",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
