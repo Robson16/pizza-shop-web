@@ -16,7 +16,7 @@ Criar um dashboard de administrador que permita:
 - Comunicação eficiente com APIs via requisições HTTP
 - Interface responsiva e intuitiva
 
-## 🛠️ Tecnologias 
+## 🛠️ Tecnologias
 
 - **[Vite](https://vitejs.dev/)** - Build tool rápido e moderno
 - **[React 19](https://react.dev/)** - Library para construção de interfaces
@@ -27,10 +27,10 @@ Criar um dashboard de administrador que permita:
 - **[shadcn/ui](https://ui.shadcn.com/)** - Componentes acessíveis e reutilizáveis
 - **[ESLint](https://eslint.org/)** - Linter para manter qualidade de código
 - **[Prettier](https://prettier.io/)** - Formatador de código
- - **Vitest** - Testes unitários
- - **Playwright** - Testes end-to-end
- - **MSW (Mock Service Worker)** - Mock de API para testes e desenvolvimento
- - **@testing-library/react / @testing-library/jest-dom** - Utilitários para testes de componentes
+- **Vitest** - Testes unitários
+- **Playwright** - Testes end-to-end
+- **MSW (Mock Service Worker)** - Mock de API para testes e desenvolvimento
+- **@testing-library/react / @testing-library/jest-dom** - Utilitários para testes de componentes
 
 ## 🚀 Como Começar
 
