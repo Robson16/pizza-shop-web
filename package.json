@@ -28,6 +28,7 @@
   "scripts": {
     "dev": "vite",
     "dev:test": "vite --port 50789 --mode test",
+    "dev:test:e2e": "playwright test",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -69,6 +70,7 @@
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",
+    "@playwright/test": "1.57.0",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.1",
     "@testing-library/user-event": "14.6.1",
