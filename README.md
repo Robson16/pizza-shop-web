@@ -16,7 +16,7 @@ Criar um dashboard de administrador que permita:
 - Comunicação eficiente com APIs via requisições HTTP
 - Interface responsiva e intuitiva
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias 
 
 - **[Vite](https://vitejs.dev/)** - Build tool rápido e moderno
 - **[React 19](https://react.dev/)** - Library para construção de interfaces
@@ -27,6 +27,10 @@ Criar um dashboard de administrador que permita:
 - **[shadcn/ui](https://ui.shadcn.com/)** - Componentes acessíveis e reutilizáveis
 - **[ESLint](https://eslint.org/)** - Linter para manter qualidade de código
 - **[Prettier](https://prettier.io/)** - Formatador de código
+ - **Vitest** - Testes unitários
+ - **Playwright** - Testes end-to-end
+ - **MSW (Mock Service Worker)** - Mock de API para testes e desenvolvimento
+ - **@testing-library/react / @testing-library/jest-dom** - Utilitários para testes de componentes
 
 ## 🚀 Como Começar
 
@@ -48,11 +52,29 @@ cd pizza-shop-web
 npm install
 ```
 
+### Variáveis de ambiente
+
+O projeto fornece um arquivo de exemplo e um arquivo de ambiente para modo de teste:
+
+- `.env.example` — exemplo de variáveis
+- `.env.test` — usado pelo modo de teste (contém `VITE_API_URL="/"` e `VITE_ENABLE_API_DELAY=false`)
+
+Quando executar em modo `test` o Vite carrega `.env.test` automaticamente.
+
 ### Scripts Disponíveis
 
 ```bash
 # Inicia o servidor de desenvolvimento
 npm run dev
+
+# Inicia o servidor de desenvolvimento em modo de teste (porta usada nos e2e)
+npm run dev:test
+
+# Executa os testes end-to-end (Playwright). O Playwright inicia o servidor de teste automaticamente.
+npm run dev:test:e2e
+
+# Testes unitários (Vitest)
+npm test
 
 # Constrói a aplicação para produção
 npm run build
@@ -72,6 +94,28 @@ npm run format
 # Verifica se o código está formatado corretamente
 npm run format:check
 ```
+
+## 🧪 Testes
+
+- Unitários: `vitest` (executar `npm test`).
+- E2E: `@playwright/test`. Execute `npm run dev:test:e2e` — o Playwright usará o `webServer` configurado em `playwright.config.ts` para iniciar `npm run dev:test` automaticamente.
+
+Dicas para executar Playwright localmente:
+
+```bash
+# Executa todos os testes e2e
+npm run dev:test:e2e
+
+# Executa em modo debug/headed
+npx playwright test --headed --project=chromium
+
+# Abre relatório HTML após execução
+npx playwright show-report
+```
+
+## 🧩 Mocks e MSW
+
+O projeto usa MSW para simular a API em modo de desenvolvimento/teste. O worker está disponível em `public/mockServiceWorker.js` e os handlers em `src/services/mocks`.
 
 ## 📁 Estrutura do Projeto
 
@@ -93,6 +137,7 @@ src/
 │   │   └── orders/    # Módulo de pedidos
 │   └── auth/          # Páginas de autenticação
 ├── services/          # Serviços de integração com API
+tests/                 # Testes end-to-end (Playwright)
 ```
 
 ## 🔐 Autenticação
@@ -115,5 +160,9 @@ Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 ---
 
 <p align="center">
-  Feito com 💜 por <a href="https://github.com/Robson16/">Robson H. Rodrigues</a>
+	Feito com 💜 por <a href="https://github.com/Robson16/">Robson H. Rodrigues</a>
 </p>
+
+---
+
+Feito com 💜 por [Robson H. Rodrigues](https://github.com/Robson16/)
