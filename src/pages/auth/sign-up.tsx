@@ -85,7 +85,7 @@ export function SignUp() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Nome do estabelecimento</Label>
+              <Label htmlFor="restaurantName">Nome do estabelecimento</Label>
               <Input
                 id="restaurantName"
                 type="text"
@@ -95,7 +95,7 @@ export function SignUp() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Seu nome</Label>
+              <Label htmlFor="managerName">Seu nome</Label>
               <Input
                 id="managerName"
                 type="text"
@@ -105,12 +105,12 @@ export function SignUp() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Seu telefone</Label>
+              <Label htmlFor="phone">Seu telefone</Label>
               <Input id="phone" type="tel" required {...register('phone')} />
             </div>
 
             <Button disabled={isSubmitting} className="w-full" type="submit">
-              finalizar cadastro
+              Finalizar cadastro
             </Button>
 
             <p className="text-muted-foreground px-6 text-center text-sm leading-relaxed">
@@ -120,7 +120,7 @@ export function SignUp() {
               </a>{' '}
               e{' '}
               <a className="underline underline-offset-4" href="#">
-                Politicas de Privacidade.
+                Políticas de Privacidade.
               </a>
             </p>
           </form>
