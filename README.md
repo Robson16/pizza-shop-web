@@ -1,36 +1,35 @@
 # 🍕 Pizza Shop Web
 
-Dashboard de gerenciamento para pizzarias, desenvolvido com React e tecnologias modernas.
+> Dashboard administrativo para gerenciamento de pizzarias, focado em performance e experiência do usuário.
 
-## 📋 Descrição
+<p align="center">
+  <img alt="Pizza Shop Web Preview" src="./cover.jpg" width="100%">
+</p>
 
-Uma aplicação web completa para gerenciar pedidos e entregas de uma pizzaria. Este projeto foi desenvolvido para praticar conceitos avançados de React, integração com APIs, e boas práticas de desenvolvimento frontend.
+## 📋 Sobre o Projeto
 
-## 🎯 Objetivo
+O **Pizza Shop Web** é uma aplicação completa de dashboard desenvolvida para facilitar a gestão de pedidos e entregas de uma pizzaria. O projeto foca em conceitos avançados do ecossistema React, incluindo gerenciamento de estado complexo, roteamento, formulários validados e uma estratégia robusta de testes.
 
-Criar um dashboard de administrador que permita:
+## ✨ Funcionalidades
 
-- Gerenciar pedidos e entregas
-- Acompanhar o status dos pedidos
-- Autenticação segura de usuários
-- Comunicação eficiente com APIs via requisições HTTP
-- Interface responsiva e intuitiva
+- [x] **Dashboard:** Métricas de receitas, pedidos e cancelamentos (diário/mensal).
+- [x] **Gestão de Pedidos:** Listagem, filtragem e alteração de status em tempo real.
+- [x] **Autenticação:** Fluxo de login via Magic Link.
+- [x] **Perfil:** Gerenciamento de informações do estabelecimento.
+- [x] **Interface Responsiva:** Design otimizado para diferentes tamanhos de tela.
+- [x] **Dark/Light Mode:** Suporte a temas persistentes.
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias e Ferramentas
 
-- **[Vite](https://vitejs.dev/)** - Build tool rápido e moderno
-- **[React 19](https://react.dev/)** - Library para construção de interfaces
-- **[TypeScript](https://www.typescriptlang.org/)** - Tipagem estática para JavaScript
-- **[React Router DOM](https://reactrouter.com/)** - Roteamento de páginas
-- **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework de CSS utilitário
-- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes acessíveis e reutilizáveis
-- **[ESLint](https://eslint.org/)** - Linter para manter qualidade de código
-- **[Prettier](https://prettier.io/)** - Formatador de código
-- **Vitest** - Testes unitários
-- **Playwright** - Testes end-to-end
-- **MSW (Mock Service Worker)** - Mock de API para testes e desenvolvimento
-- **@testing-library/react / @testing-library/jest-dom** - Utilitários para testes de componentes
+- **Core:** [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/)
+- **Estado & Data Fetching:** [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- **Roteamento:** [React Router DOM](https://reactrouter.com/)
+- **Formulários:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Testes:**
+  - **Unitários:** [Vitest](https://vitest.dev/) & [Testing Library](https://testing-library.com/)
+  - **E2E:** [Playwright](https://playwright.dev/)
+  - **Mocks:** [MSW (Mock Service Worker)](https://mswjs.io/)
 
 ## 🚀 Como Começar
 
@@ -56,10 +55,27 @@ npm install
 
 O projeto fornece um arquivo de exemplo e um arquivo de ambiente para modo de teste:
 
-- `.env.example` — exemplo de variáveis
-- `.env.test` — usado pelo modo de teste (contém `VITE_API_URL="/"` e `VITE_ENABLE_API_DELAY=false`)
+- `.env.example` — exemplo de variáveis (use como base)
+- `.env.local` — variáveis para desenvolvimento local
+- `.env.test` — usado pelo modo de teste (ex.: `VITE_API_URL="/"`, `VITE_ENABLE_API_DELAY=false`, `VITE_USE_MOCKS=true`)
 
-Quando executar em modo `test` o Vite carrega `.env.test` automaticamente.
+Exemplos:
+
+`.env.example`
+
+```
+VITE_API_URL="http://localhost:3333"
+VITE_ENABLE_API_DELAY=true
+VITE_USE_MOCKS=false
+```
+
+`.env.test`
+
+```
+VITE_API_URL="/"
+VITE_ENABLE_API_DELAY=false
+VITE_USE_MOCKS=true
+```
 
 ### Scripts Disponíveis
 
@@ -156,12 +172,6 @@ O backend da aplicação está disponível em um repositório separado, desenvol
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
----
-
-<p align="center">
-	Feito com 💜 por <a href="https://github.com/Robson16/">Robson H. Rodrigues</a>
-</p>
 
 ---
 
