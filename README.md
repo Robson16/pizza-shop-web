@@ -167,7 +167,7 @@ O projeto implementa um sistema de autenticação com layouts separados:
 
 O backend da aplicação está disponível em um repositório separado, desenvolvido com Bun, Elysia, Drizzle ORM, TypeScript e outras tecnologias modernas. Ele oferece autenticação, gerenciamento de pedidos, clientes e integração com banco de dados PostgreSQL.
 
-- Repositório: [rocketseat-education/pizzashop-api](https://github.com/rocketseat-education/pizzashop-api)
+- Repositório: [Robson16/pizza-shop-api](https://github.com/Robson16/pizza-shop-api)
 
 ## 📄 Licença
 
